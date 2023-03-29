@@ -2,7 +2,7 @@ import ListGroup from "react-bootstrap/ListGroup"
 
 import Post from "./Post"
 
-const Timeline = ({ posts }) => (
+const Newsfeed = ({ posts }) => (
   <ListGroup>
     {posts.map((post) => (
       <Post key={post.id} post={post} />
@@ -10,4 +10,4 @@ const Timeline = ({ posts }) => (
   </ListGroup>
 )
 
-export default Timeline
+export default Newsfeed
