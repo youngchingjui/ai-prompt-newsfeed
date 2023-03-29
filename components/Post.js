@@ -21,7 +21,16 @@ const Post = ({ post }) => {
           style={{ objectFit: "cover" }}
         />
       </div>
-      <p>{content}</p>
+      <p
+        style={{
+          color: "#888",
+          fontSize: "18px",
+          lineHeight: "1.2",
+          marginBottom: "1rem",
+        }}
+      >
+        {content}
+      </p>
       <div>
         <Badge variant="secondary" className="mr-2">
           {likes} likes
