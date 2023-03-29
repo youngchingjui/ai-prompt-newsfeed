@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import Container from "react-bootstrap/Container"
 
-import Timeline from "../components/Timeline"
+import Timeline from "../components/Newsfeed"
 import { posts } from "../data/mockData"
 
 const MyApp = ({ posts }) => (
