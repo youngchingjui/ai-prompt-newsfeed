@@ -1,9 +1,10 @@
 import Image from "next/image"
-import { Badge } from "react-bootstrap"
+import Badge from "react-bootstrap/Badge"
 import ListGroup from "react-bootstrap/ListGroup"
 
 const Post = ({ post }) => {
-  const { title, prompt, imageUrl, likes, views } = post
+  const { prompt, image_url, likes, views } = post
+
   return (
     <ListGroup.Item>
       <div
@@ -15,9 +16,9 @@ const Post = ({ post }) => {
         }}
       >
         <Image
-          src={imageUrl}
+          src={image_url}
           fill={true}
-          alt={title}
+          alt={prompt}
           style={{ objectFit: "cover" }}
         />
       </div>
