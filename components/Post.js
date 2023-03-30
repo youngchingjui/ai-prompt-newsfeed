@@ -3,7 +3,7 @@ import { Badge } from "react-bootstrap"
 import ListGroup from "react-bootstrap/ListGroup"
 
 const Post = ({ post }) => {
-  const { title, content, imageUrl, likes, views } = post
+  const { title, prompt, imageUrl, likes, views } = post
   return (
     <ListGroup.Item>
       <div
@@ -29,7 +29,7 @@ const Post = ({ post }) => {
           marginBottom: "1rem",
         }}
       >
-        {content}
+        {prompt}
       </p>
       <div>
         <Badge variant="secondary" className="mr-2">
