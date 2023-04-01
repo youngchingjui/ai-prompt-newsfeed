@@ -24,7 +24,7 @@ export async function getStaticProps() {
     })
   )
 
-  return { props: { posts: serializedPosts } }
+  return { props: { posts: serializedPosts }, revalidate: 1 }
 }
 
 export default MyApp
