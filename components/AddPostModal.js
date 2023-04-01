@@ -3,26 +3,26 @@ import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import Modal from "react-bootstrap/Modal"
 
+import createPostFormData from "../lib/createPostFormData"
 import savePostData from "../lib/savePostData"
 import SaveButton from "./SaveButton"
 
 const AddPostModal = ({ show, handleCloseModal }) => {
   const [prompt, setPrompt] = useState("")
   const [image, setImage] = useState(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSaveClick = async (e) => {
     e.preventDefault()
 
-    const formData = new FormData()
-    formData.append("prompt", prompt)
+    setIsSubmitting(true)
 
-    if (image) {
-      const fileStream = image.slice(0, image.size, image.type)
-      formData.append("image", fileStream, image.name)
-    }
-
+    const formData = createPostFormData(prompt, image)
     await savePostData(formData)
 
+    setIsSubmitting(false)
+
+    // Clear the fields
     setPrompt("")
     setImage(null)
 
@@ -61,7 +61,7 @@ const AddPostModal = ({ show, handleCloseModal }) => {
         <Button variant="secondary" onClick={handleCloseModal}>
           Cancel
         </Button>
-        <SaveButton onClick={handleSaveClick} />
+        <SaveButton onClick={handleSaveClick} isSubmitting={isSubmitting} />
       </Modal.Footer>
     </Modal>
   )
