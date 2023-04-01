@@ -1,8 +1,8 @@
 import multer from "multer"
 import nextConnect from "next-connect"
 
-import { insertPost } from "../../lib/insertPost"
-import uploadImageToS3 from "../../lib/uploadImageToS3"
+import { insertPost } from "../../../lib/insertPost"
+import uploadImageToS3 from "../../../lib/uploadImageToS3"
 
 const upload = multer()
 
