@@ -1,8 +1,10 @@
-import axios from "axios"
 import { useState } from "react"
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 import Modal from "react-bootstrap/Modal"
+
+import savePostData from "../lib/savePostData"
+import SaveButton from "./SaveButton"
 
 const AddPostModal = ({ show, handleCloseModal }) => {
   const [prompt, setPrompt] = useState("")
@@ -19,26 +21,11 @@ const AddPostModal = ({ show, handleCloseModal }) => {
       formData.append("image", fileStream, image.name)
     }
 
-    try {
-      const response = await axios.post("/api/posts", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-        maxContentLength: Infinity,
-        maxBodyLength: Infinity,
-      })
+    await savePostData(formData)
 
-      console.log("response", response)
+    setPrompt("")
+    setImage(null)
 
-      if (!response.statusText == "OK") {
-        throw new Error("Error saving post")
-        return
-      }
-
-      // Reset form state
-      setPrompt("")
-      setImage(null)
-    } catch (error) {
-      console.error(error)
-    }
     handleCloseModal()
   }
 
@@ -74,9 +61,7 @@ const AddPostModal = ({ show, handleCloseModal }) => {
         <Button variant="secondary" onClick={handleCloseModal}>
           Cancel
         </Button>
-        <Button variant="primary" onClick={handleSaveClick}>
-          Save
-        </Button>
+        <SaveButton onClick={handleSaveClick} />
       </Modal.Footer>
     </Modal>
   )
