@@ -1,16 +1,12 @@
 import Container from "react-bootstrap/Container"
 
-import Header from "../components/Header"
 import Newsfeed from "../components/Newsfeed"
 import { getPosts } from "../lib/getPosts"
 
 const MyApp = ({ posts }) => (
-  <>
-    <Header />
-    <Container>
-      <Newsfeed posts={posts} />
-    </Container>
-  </>
+  <Container>
+    <Newsfeed posts={posts} />
+  </Container>
 )
 
 export async function getStaticProps() {

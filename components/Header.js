@@ -1,7 +1,9 @@
 import Link from "next/link"
-import { signIn, signOut, useSession } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
+
+import ProfileButton from "./ProfileButton"
 
 const Header = () => {
   const { data: session } = useSession()
@@ -13,19 +15,9 @@ const Header = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Item>
-            <Link href="/">Home</Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Link href="/about">About</Link>
-          </Nav.Item>
-        </Nav>
         <Nav>
           {session ? (
-            <Nav.Item>
-              <Nav.Link onClick={() => signOut()}>Sign out</Nav.Link>
-            </Nav.Item>
+            <ProfileButton user={session.user} />
           ) : (
             <Nav.Item>
               <Nav.Link onClick={() => signIn()}>Sign in</Nav.Link>
