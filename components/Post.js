@@ -3,7 +3,7 @@ import Badge from "react-bootstrap/Badge"
 import ListGroup from "react-bootstrap/ListGroup"
 
 const Post = ({ post }) => {
-  const { prompt, image_url, likes, views } = post
+  const { prompt, image_url, likes, views, index } = post
 
   return (
     <ListGroup.Item>
@@ -20,6 +20,7 @@ const Post = ({ post }) => {
           fill={true}
           alt={prompt}
           style={{ objectFit: "cover" }}
+          priority={index < 3}
         />
       </div>
       <p
