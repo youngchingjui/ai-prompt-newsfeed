@@ -6,7 +6,7 @@ import uploadImageToS3 from "../../lib/uploadImageToS3"
 
 const upload = multer()
 
-const apiRoute = nextConnect({
+const handler = nextConnect({
   onError(error, req, res) {
     console.error(error)
     res.status(500).json({ error: "Internal Server Error" })
@@ -16,9 +16,9 @@ const apiRoute = nextConnect({
   },
 })
 
-apiRoute.use(upload.single("image"))
+handler.use(upload.single("image"))
 
-apiRoute.post(async (req, res) => {
+handler.post(async (req, res) => {
   const { prompt } = req.body
   const { originalname, mimetype, size, buffer } = req.file
   const image_url = await uploadImageToS3(buffer, mimetype, originalname)
@@ -26,7 +26,7 @@ apiRoute.post(async (req, res) => {
   res.status(200).json({ message: "File uploaded successfully", row })
 })
 
-export default apiRoute
+export default handler
 
 export const config = {
   api: {

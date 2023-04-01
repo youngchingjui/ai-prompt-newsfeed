@@ -2,8 +2,10 @@ import Image from "next/image"
 import Badge from "react-bootstrap/Badge"
 import ListGroup from "react-bootstrap/ListGroup"
 
-const Post = ({ post }) => {
-  const { prompt, image_url, likes, views, index } = post
+import LikeButton from "./LikeButton"
+
+const Post = ({ post, index }) => {
+  const { prompt, image_url, likes, views, id } = post
 
   return (
     <ListGroup.Item>
@@ -34,10 +36,7 @@ const Post = ({ post }) => {
         {prompt}
       </p>
       <div>
-        <Badge variant="secondary" className="mr-2">
-          {likes} likes
-        </Badge>
-        <Badge variant="secondary">{views} views</Badge>
+        <LikeButton postId={id} likes={likes} />
       </div>
     </ListGroup.Item>
   )
