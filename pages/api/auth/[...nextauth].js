@@ -11,6 +11,14 @@ export const authOptions = {
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
     }),
   ],
+  callbacks: {
+    async session({ session, token, user }) {
+      // Send user id to the client
+      session.user.id = user.id
+
+      return session
+    },
+  },
 }
 
 export default NextAuth(authOptions)
