@@ -1,7 +1,7 @@
 import multer from "multer"
 import nextConnect from "next-connect"
 
-import { insertPost } from "../../../lib/insertPost"
+import { createPost } from "../../../lib/createPost"
 import uploadImageToS3 from "../../../lib/uploadImageToS3"
 
 const upload = multer()
@@ -22,7 +22,7 @@ handler.post(async (req, res) => {
   const { prompt } = req.body
   const { originalname, mimetype, size, buffer } = req.file
   const image_url = await uploadImageToS3(buffer, mimetype, originalname)
-  const row = await insertPost(prompt, image_url)
+  const row = await createPost(prompt, image_url)
   res.status(200).json({ message: "File uploaded successfully", row })
 })
 
