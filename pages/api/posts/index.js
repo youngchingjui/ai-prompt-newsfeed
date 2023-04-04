@@ -1,23 +1,15 @@
 import multer from "multer"
 import { getServerSession } from "next-auth"
-import nextConnect from "next-connect"
 
 import { authOptions } from "/pages/api/auth/[...nextauth]"
 
 import createPost from "../../../lib/createPost"
+import nextConnectBase from "../../../lib/nextConnectBase"
 import uploadImageToS3 from "../../../lib/uploadImageToS3"
 
 const upload = multer()
 
-const handler = nextConnect({
-  onError(error, req, res) {
-    console.error(error)
-    res.status(500).json({ error: "Internal Server Error" })
-  },
-  onNoMatch(req, res) {
-    res.status(405).json({ error: `Method '${req.method}' Not Allowed` })
-  },
-})
+const handler = nextConnectBase()
 
 handler.use(upload.single("image"))
 
