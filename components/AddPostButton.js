@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react"
 import { useState } from "react"
 import Button from "react-bootstrap/Button"
 import { FiPlus } from "react-icons/fi"
@@ -6,9 +7,12 @@ import AddPostModal from "./AddPostModal"
 
 const AddPostButton = () => {
   const [showModal, setShowModal] = useState(false)
+  const { data: session } = useSession()
 
   const handleShowModal = () => setShowModal(true)
   const handleCloseModal = () => setShowModal(false)
+
+  if (!session) return null
 
   return (
     <>
