@@ -7,10 +7,6 @@ function ProfileButton({ user }) {
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
 
-  function handleProfileClick() {
-    setIsOpen(!isOpen)
-  }
-
   function handleProfilePageClick() {
     router.push("/profile")
     setIsOpen(false)

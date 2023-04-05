@@ -3,11 +3,7 @@ import Container from "react-bootstrap/Container"
 import Newsfeed from "../components/Newsfeed"
 import getPosts from "../lib/getPosts"
 
-const MyApp = ({ posts }) => (
-  <Container>
-    <Newsfeed posts={posts} />
-  </Container>
-)
+const MyApp = ({ posts }) => <Newsfeed posts={posts} />
 
 export async function getStaticProps() {
   const posts = await getPosts()

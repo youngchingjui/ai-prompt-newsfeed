@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { useState } from "react"
+import Container from "react-bootstrap/Container"
 import ListGroup from "react-bootstrap/ListGroup"
 
 import LikeButton from "./LikeButton"
@@ -11,7 +12,7 @@ const Post = ({ post, index }) => {
 
   return (
     <>
-      <ListGroup.Item>
+      <ListGroup.Item border={false} className="border-0 px-0 py-2">
         <div
           style={{
             position: "relative",
@@ -29,19 +30,21 @@ const Post = ({ post, index }) => {
             onClick={() => setShowImage(true)}
           />
         </div>
-        <p
-          style={{
-            color: "#888",
-            fontSize: "18px",
-            lineHeight: "1.2",
-            marginBottom: "1rem",
-          }}
-        >
-          {prompt}
-        </p>
-        <div>
-          <LikeButton postId={id} likes={likes} />
-        </div>
+        <Container>
+          <p
+            style={{
+              color: "#888",
+              fontSize: "18px",
+              lineHeight: "1.2",
+              marginBottom: "1rem",
+            }}
+          >
+            {prompt}
+          </p>
+          <div>
+            <LikeButton postId={id} likes={likes} isLikedInit={is_liked} />
+          </div>
+        </Container>
       </ListGroup.Item>
       <PostImageModal
         imageUrl={image_url}
