@@ -42,7 +42,7 @@ const Post = ({ post, index }) => {
             {prompt}
           </p>
           <div>
-            <LikeButton postId={id} likes={likes} isLikedInit={is_liked} />
+            <LikeButton postId={id} likes={likes} />
           </div>
         </Container>
       </ListGroup.Item>

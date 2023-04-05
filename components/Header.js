@@ -13,7 +13,7 @@ const Header = () => {
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand>
-          <Link href="/">AI Asks</Link>
+          <Link href="/">Book of Prompts</Link>
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
