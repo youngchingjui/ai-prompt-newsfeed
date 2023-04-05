@@ -12,12 +12,13 @@ const Post = ({ post, index }) => {
 
   return (
     <>
-      <ListGroup.Item border={false} className="border-0 px-0 py-2">
+      <ListGroup.Item className="border-0 px-0 py-2 mb-3">
         <div
           style={{
             position: "relative",
             width: "100%",
-            height: "300px",
+            height: "1000px",
+            maxHeight: "75vh",
             overflow: "hidden",
           }}
         >
@@ -37,6 +38,7 @@ const Post = ({ post, index }) => {
               fontSize: "18px",
               lineHeight: "1.2",
               marginBottom: "1rem",
+              marginTop: "0.5rem",
             }}
           >
             {prompt}
