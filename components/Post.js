@@ -14,11 +14,11 @@ const Post = ({ post, index, isLiked }) => {
   const { prompt, image_url, likes, views, id } = post
 
   return (
-    <Link
-      href={`/post/${id}`}
-      style={{ color: "inherit", textDecoration: "none" }}
-    >
-      <ListGroup.Item className="border-0 px-0 py-2 mb-3">
+    <ListGroup.Item className="border-0 px-0 py-2 mb-3">
+      <Link
+        href={`/post/${id}`}
+        style={{ color: "inherit", textDecoration: "none" }}
+      >
         <div
           style={{
             position: "relative",
@@ -36,19 +36,19 @@ const Post = ({ post, index, isLiked }) => {
             priority={index < 3}
           />
         </div>
-        <Container>
-          <PromptText>{prompt}</PromptText>
-          <div>
-            <LikeButton
-              key={isLiked} // Resets state when isLiked is loaded
-              postId={id}
-              likes={likes}
-              isLikedInit={isLiked}
-            />
-          </div>
-        </Container>
-      </ListGroup.Item>
-    </Link>
+      </Link>
+      <Container>
+        <PromptText>{prompt}</PromptText>
+        <div>
+          <LikeButton
+            key={isLiked} // Resets state when isLiked is loaded
+            postId={id}
+            likes={likes}
+            isLikedInit={isLiked}
+          />
+        </div>
+      </Container>
+    </ListGroup.Item>
   )
 }
 
