@@ -3,6 +3,24 @@ import nextConnectBase from "../../../lib/nextConnectBase"
 
 const handler = nextConnectBase()
 
+handler.get(async (req, res) => {
+  const { user_id } = req.query
+  console.log(req)
+
+  try {
+    const { rows } = await query(
+      `
+    SELECT * FROM likes 
+    WHERE user_id = $1`,
+      [user_id]
+    )
+    return res.json({ rows })
+  } catch (e) {
+    console.error(e)
+    res.status(500).json({ message: e.message })
+  }
+})
+
 handler.post(async (req, res) => {
   const { user_id, post_id, is_liked } = req.body
   const postIdInt = parseInt(post_id)

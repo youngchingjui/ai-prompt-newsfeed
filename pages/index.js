@@ -1,5 +1,3 @@
-import Container from "react-bootstrap/Container"
-
 import Newsfeed from "../components/Newsfeed"
 import getPosts from "../lib/getPosts"
 
