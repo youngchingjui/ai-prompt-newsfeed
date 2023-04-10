@@ -7,7 +7,7 @@ const PromptText = ({ children, props }) => {
   const textTarget = useRef(null)
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(children)
+    navigator.clipboard.writeText("/imagine prompt:" + children)
     setCopied(true)
     setTimeout(() => setCopied(false), 3000)
   }

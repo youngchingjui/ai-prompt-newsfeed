@@ -24,9 +24,16 @@ const Header = () => {
             {session ? (
               <ProfileButton user={session.user} />
             ) : (
-              <Nav.Item>
-                <Nav.Link onClick={() => signIn()}>Sign in</Nav.Link>
-              </Nav.Item>
+              <>
+                <Nav.Item>
+                  <Nav.Link href="/permutationGenerator">
+                    Permutation Generator
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link onClick={() => signIn()}>Sign in</Nav.Link>
+                </Nav.Item>
+              </>
             )}
           </Nav>
         </Navbar.Collapse>
